@@ -1,0 +1,29 @@
+### Commands
+
+CLOCK[8 bytes x 3]
+    - The first 8 bytes is the epoch second the timer starts from
+    - The second 8 bytes is the number of seconds the timer ticks down from
+    - The third 8 bytes is the transition time (between climbing times)
+TIMER
+NMBRS####[3 bytes x 4]
+    - # is a human-readable one digit number
+    - Each 3 bytes is a color defined by CRGB in FastLED
+SGMTS[3 bytes x 28]
+    - Gives freedom of painting each segment separately
+    - Each 3 bytes is the color for the corresponding segment in the display
+    - Write black (0xffffff) for an unlit segment
+
+The system is in little endian.
+
+There are no delimiters between different items in the commands. The command doesn't have to end with a special character such as a null character.
+
+### Error Codes
+Errors originating from the LED module are displayed on the LED screen.
+Errors originating from the WiFi module will be displayed with a number.
+
+0 = No error
+1 = WiFi module has no connection
+2 = Unknown Firebase error
+3 = Firebase stream begin error
+4 = Firebase HTTP connection error
+5 = Firebase stream read error
