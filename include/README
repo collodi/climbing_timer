@@ -1,10 +1,11 @@
 ### Commands
 
-CLOCK[8 bytes x 3]
+CLOCK[4 bytes]
+    - The 4 bytes (int) is the offset from UTC
+TIMER[8 bytes x 3]
     - The first 8 bytes is the epoch second the timer starts from
     - The second 8 bytes is the number of seconds the timer ticks down from
     - The third 8 bytes is the transition time (between climbing times)
-TIMER
 NMBRS####[3 bytes x 4]
     - # is a human-readable one digit number
     - Each 3 bytes is a color defined by CRGB in FastLED

@@ -43,7 +43,7 @@ void display_loading(CRGB color) {
 void display(display_stat stat) {
     switch (stat.mode) {
         case CLOCK:
-            display_clock();
+            display_clock(stat.clock_offset);
             break;
         case TIMER:
             display_timer(stat.timer_start, stat.timer_top, stat.timer_transition);
@@ -60,8 +60,8 @@ void display(display_stat stat) {
     }
 }
 
-void display_clock(void) {
-    time_t now = time(nullptr);
+void display_clock(int offset) {
+    time_t now = time(nullptr) + offset;
     struct tm *t = localtime(&now);
     write_two_doubles(t->tm_hour, t->tm_min, CRGB::Green);
 	FastLED.show();

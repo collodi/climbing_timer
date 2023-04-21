@@ -62,6 +62,7 @@ void loop() {
 		memcpy(&(d_stat.timer_transition), &data[21], sizeof(time_t));
 	} else if(strncmp(data, "CLOCK", 5) == 0) {
 		d_stat.mode = CLOCK;
+		memcpy(&(d_stat.clock_offset), &data[5], 4);
 	} else if(strncmp(data, "NMBRS", 5) == 0) {
 		d_stat.mode = NUMBERS;
 
@@ -108,8 +109,7 @@ int connect_to_internet(void) {
 }
 
 void config_clock(void) {
-	// TODO daylight savings
-	configTime(-7 * 3600, 3600, "pool.ntp.org", "time.nist.gov");
+	configTime(0, 0, "pool.ntp.org", "time.nist.gov");
 	time_t now = time(nullptr);
 
 	// wait for clock to be set up

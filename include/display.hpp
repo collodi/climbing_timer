@@ -18,6 +18,8 @@ enum error_type {
 
 struct display_stat {
     display_mode mode = CLOCK;
+    
+    int clock_offset = 0;
 
     time_t timer_start = 0;
     time_t timer_top = 0;
@@ -36,7 +38,7 @@ void init_display(void);
 
 void display_loading(CRGB color);
 void display(display_stat stat);
-void display_clock(void);
+void display_clock(int offset);
 void display_timer(time_t start_ms, time_t top, time_t transition);
 void display_numbers(char nums[4], CRGB colors[4]);
 void display_segments(CRGB colors[28]);
