@@ -1,11 +1,9 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include "display.hpp"
+#include "credentials.h"
 
 display_stat d_stat;
-
-const char *ssid = "NETGEAR66";
-const char *pwd = "purplecanoe079";
 
 char data[100];
 uint8_t data_size;
@@ -90,7 +88,7 @@ void loop() {
 	2 = error, don't retry
 */
 int connect_to_internet(void) {
-	WiFi.begin(ssid, pwd);
+	WiFi.begin(SSID, PWD);
 
 	while (WiFi.status() != WL_CONNECTED) {
 		delay(1000);
