@@ -49,7 +49,6 @@ void loop() {
 		return;
 
 	memset(data, 0, 100);
-	Serial.println("OK");
 	
 	data_size = Serial.readBytes(data, 100);
 	if (data_size == 0)
